@@ -1,3 +1,8 @@
+if [ $DAY ] && [ `date +%w` -ne $DAY ]; then
+  echo 'today is holiday'
+  exit 0
+fi
+
 trigger_build_url=https://circleci.com/api/v1/project/${PROJECT}/tree/${BRANCH:-master}?circle-token=${CIRCLE_TOKEN}
 
 post_data='{ "build_parameters": { "BUNDLE_UPDATE": "true" } }'
