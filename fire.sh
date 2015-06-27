@@ -2,7 +2,8 @@ trigger_build_url=https://circleci.com/api/v1/project/${PROJECT}/tree/${BRANCH:-
 
 post_data='{ "build_parameters": { "BUNDLE_UPDATE": "true" } }'
 
-# Nightly buildsを実行
+echo $trigger_build_url
+
 curl \
   --header "Accept: application/json" \
   --header "Content-Type: application/json" \
