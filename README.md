@@ -11,6 +11,22 @@ herobu hits circleci nightly api with heroku in order to make pull request for b
 - Add `circleci-bundle-update-pr` gem in your project
 - Create circle.yml to your project like following
 
+#### circleci 2.0
+
+```yaml
+version: 2
+jobs:
+  nightly-build:
+    docker:
+      - image: your-docker-image
+    steps:
+      - run:
+          command: bundle exec circleci-bundle-update-pr 'Git Usename' 'Git email address'
+```
+
+
+#### circleci 1.0
+
 ```yaml
 deployment:
   production:
@@ -37,7 +53,10 @@ test:
 - Set environmental variable
     - PROJECT=your_github_name/your_project_name
     - CIRCLE_TOKEN=your_circleci_token
-    - BRANCH=target_branch_name (default: master)
-- Add Heroku Scheduler and add task `./fire.sh`
+    - BRANCH=target_branch_name (default: master)    
+    - JOB=your_job_name (circleci2.0 only)
+- Add Heroku Scheduler and add task
+  - ciecleci 1.0 `./fire.sh`
+  - ciecleci 2.0 `./fire2.sh`
 
 That's it!
