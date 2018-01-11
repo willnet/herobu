@@ -21,7 +21,7 @@ jobs:
       - image: your-docker-image
     steps:
       - checkout
-      - bundle install
+      - run: bundle install
       - run: bundle exec circleci-bundle-update-pr 'Git Usename' 'Git email address'
 ```
 
